@@ -29,6 +29,7 @@ public class propuestaProfe {
 
         if (usuarioActual == -1) {
             System.out.println("Demasiados intentos fallidos. Adiós.");
+            scanner.close();
             return;
         }
 
@@ -66,5 +67,6 @@ public class propuestaProfe {
                 System.out.println("Opción inválida.");
             }
         }
+        scanner.close();
     }
 }
