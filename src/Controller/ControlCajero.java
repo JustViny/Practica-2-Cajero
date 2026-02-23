@@ -11,6 +11,7 @@ public class ControlCajero {
     boolean salir=false;
     double saldo,retiro,deposito;
     int usuarioActual=-1;
+    String opcion;
 
     public void inicio(){
         mensaje="=== Bienvenido al Cajero ===";
@@ -38,7 +39,8 @@ public class ControlCajero {
         v.showMensaje(mensaje);
 
         while(!salir){
-            switch(v.menuPrincipal()){
+            opcion=v.menuPrincipal();
+            switch(opcion){
                 case "1":
                     mensaje="Su saldo es: $"+m.getCliente().get(usuarioActual).getSaldo();
                     v.showMensaje(mensaje);
@@ -48,7 +50,7 @@ public class ControlCajero {
                     saldo=m.getCliente().get(usuarioActual).getSaldo();
                     if(retiro<=m.getCliente().get(usuarioActual).getSaldo()){
                         saldo=saldo-retiro;
-                        mensaje="Retiro exitoso.\nNuevo saldo: $"+saldo;
+                        mensaje="Retiro exitoso.\nNuevo saldo: $"+saldo+"\n";
                         v.showMensaje(mensaje);
                         m.getCliente().get(usuarioActual).setSaldo(saldo);
                         break;
@@ -61,7 +63,7 @@ public class ControlCajero {
                     deposito=v.solicitarMonto("Ingrese cantidad a depositar: ");
                     saldo=m.getCliente().get(usuarioActual).getSaldo();
                     saldo=saldo+deposito;
-                    mensaje="Deposito exitoso.\nNuevo saldo: $"+saldo;
+                    mensaje="Deposito exitoso.\nNuevo saldo: $"+saldo+"\n";
                     v.showMensaje(mensaje);
                     m.getCliente().get(usuarioActual).setSaldo(saldo);
                     break;
